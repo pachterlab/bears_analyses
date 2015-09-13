@@ -1,0 +1,71 @@
+from os.path import expanduser, isfile
+
+N_THREADS = 9
+
+def get_sample_ids(fname):
+    ret = []
+    with open(fname, 'r') as fhandle:
+        for line in fhandle:
+            ret.append(line.strip("\n"))
+    return ret
+
+META = 'metadata/hiseq_accession.txt'
+HOME = expanduser("~")
+
+SRA_PAIRED = []
+if isfile(META):
+    SRA_PAIRED = get_sample_ids(META)
+
+ANNO_PRE = "annotation/Homo_sapiens.GRCh38.rel80.cdna.all"
+ANNO_FA = ANNO_PRE + ".fa.gz"
+KAL_IDX = ANNO_PRE + ".kidx"
+
+rule all:
+    input:
+        META,
+        expand('results/paired/{id}/kallisto/abundance.h5', id = SRA_PAIRED)
+
+rule metadata:
+    output:
+        META,
+        "metadata/hiseq_accession.txt"
+    shell:
+        "cd R; Rscript get_sample_info.R; cd .."
+
+rule kallisto_index:
+    output: KAL_IDX
+    threads: 1
+    shell:
+        'kallisto index -i {KAL_IDX} ' + ANNO_FA
+
+rule fastq_dump_paired:
+    output:
+        'data/paired/{id}',
+        'data/paired/{id}/{id}_1.fastq.gz',
+        'data/paired/{id}/{id}_2.fastq.gz'
+    benchmark:
+        'benchmarks/{id}/fastq_dump.json'
+    threads: 1
+    shell:
+        'fastq-dump '
+        '--split-files '
+        '-O {output[0]} '
+        '--gzip '
+        '{wildcards.id}'
+
+rule kallisto_paired:
+    input:
+        'data/paired/{id}/{id}_1.fastq.gz',
+        'data/paired/{id}/{id}_2.fastq.gz',
+        KAL_IDX
+    output:
+        'results/paired/{id}/kallisto',
+        'results/paired/{id}/kallisto/abundance.h5'
+    threads: 1
+    shell:
+        'kallisto quant '
+        '-i {KAL_IDX} '
+        '-b 100 '
+        '-t 7 '
+        '-o {output[0]} '
+        '{input[0]} {input[1]}'
