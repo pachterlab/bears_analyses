@@ -26,7 +26,7 @@ rule kallisto:
     output:
         'results/{samp}/kallisto',
         'results/{samp}/kallisto/abundance.h5'
-    threads: 1
+    threads: 2
     shell:
         'kallisto '
         'quant '
@@ -34,7 +34,7 @@ rule kallisto:
         '--bias '
         '-b 30 '
         '-o {output[0]} '
-        '-t 2 '
+        '-t {threads} '
         '{input[0]} {input[1]}'
 
 rule clean:
