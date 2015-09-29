@@ -9,7 +9,7 @@ def get_sample_ids(fname):
             ret.append(line.strip("\n"))
     return ret
 
-META = 'metadata/hiseq_accession.txt'
+META = 'metadata/accessions.txt'
 HOME = expanduser("~")
 
 SRA_SINGLE = []
@@ -66,6 +66,6 @@ rule kallisto_single:
         '-l 200 '
         '-s 30 '
         '--bias '
-        '-t 7 '
+        '-t 8 '
         '-o {output[0]} '
         '{input[0]}'
