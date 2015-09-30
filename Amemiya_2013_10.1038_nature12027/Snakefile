@@ -47,7 +47,7 @@ rule fastq_dump_paired:
     threads: 1
     shell:
         'fastq-dump '
-        '--split-files '
+        '--split-3 '
         '-O {output[0]} '
         '--gzip '
         '{wildcards.id}'
