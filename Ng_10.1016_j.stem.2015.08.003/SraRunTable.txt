@@ -1,0 +1,5 @@
+run replicate condition
+SRR2038218 2  smn
+SRR2038217 1  smn
+SRR2038216 2  control
+SRR2038215 1  control
