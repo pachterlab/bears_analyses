@@ -22,13 +22,14 @@ t2g <- readRDS('t2g.rds')
 #
 #run sleuth
 #
-so <- sleuth_prep(kal_dirs, s2c, ~ condition, target_mapping = t2g)
+so <- sleuth_prep(s2c, ~ condition, target_mapping = t2g)
 so <- sleuth_fit(so)
 so <- sleuth_wt(so, which_beta = 'conditionwildtype')
 
 plot_volcano(so, 'conditionwildtype')
 
 sleuth_live(so)
+
 #
 #likelihood ratio test
 #
@@ -38,8 +39,8 @@ so <- sleuth_lrt(so, "reduced", "full")
 #
 #example of extracting results
 #
-temp <- sleuth_results(so, test = 'reduced:full', test_type = 'lrt')
-temp <- sleuth_results(so, test = 'conditionwildtype')
+lrt_results <- sleuth_results(so, test = 'reduced:full', test_type = 'lrt')
+wt_results <- sleuth_results(so, test = 'conditionwildtype')
 
 # YJL133C-A
 # YDL160C-A
