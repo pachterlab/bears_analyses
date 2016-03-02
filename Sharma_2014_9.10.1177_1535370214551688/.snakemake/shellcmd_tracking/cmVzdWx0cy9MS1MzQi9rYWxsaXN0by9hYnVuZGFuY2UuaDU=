@@ -1,0 +1,1 @@
+kallisto quant -i Rattus_norvegicus.Rnor_5.0.rel79.cdna.all.kidx --bias -b 100 -o results/LKS3B/kallisto -t 1 --single -l 180 -s 20 results/LKS3B/Sharma-RNA-LKS3B_1.txt.gz 

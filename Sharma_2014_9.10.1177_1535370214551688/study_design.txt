@@ -1,0 +1,7 @@
+run condition sample
+HKS1A HK A
+HKS2A HK B
+HKS3B HK C
+LKS1A LK A
+LKS2A LK B
+LKS3B LK C
