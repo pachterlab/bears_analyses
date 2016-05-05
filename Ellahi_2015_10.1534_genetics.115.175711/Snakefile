@@ -1,5 +1,8 @@
-fasta = 'Saccharomyces_cerevisiae.R64-1-1.rel81.cdna.all.fa.gz'
+species = 'saccharomyces_cerevisiae'
+gtf = 'Saccharomyces_cerevisiae.R64-1-1.80.gtf'
+fasta = 'Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa'
 kidx = 'Saccharomyces_cerevisiae.R64-1-1.rel81.cdna.all.21.kidx'
+ensembl = 'ftp://ftp.ensembl.org/pub/release-80'
 
 sids = ['SRR1812768', 'SRR1812760', 'SRR1811834', 'SRR1812754', 'SRR1812759',
         'SRR1812767']
@@ -9,14 +12,35 @@ rule all:
         kidx,
         expand('results/{s}/kallisto/abundance.h5', s = sids)
 
+rule get_genome:
+    output: 
+        expand('../genome/{f}', f = fasta)
+    shell:
+        'cd ../genome && '
+        'wget -O {fasta}.gz {ensembl}/fasta/{species}/dna/{fasta}.gz && '
+        'gunzip {fasta}.gz'
+
+rule get_anno:
+    input:
+        expand('../genome/{f}', f = fasta)
+    output:
+        expand('../annotation/{g}', g = gtf)
+    shell:
+        'cd ../annotation && '
+        'wget -O {gtf}.gz {ensembl}/gtf/{species}/{gtf}.gz && '
+        'gunzip {gtf}.gz && '
+	'gffread {gtf} ../genome/{fasta}'
+
 rule index:
+    input:
+        expand('../genome/{f}', f = fasta)
     output:
         kidx
     shell:
         'kallisto index '
         '-k 21 '
         '-i {output} '
-        '{fasta}'
+        '../genome/{fasta}'
 
 rule kallisto:
     input:
@@ -37,6 +61,18 @@ rule kallisto:
         '-t {threads} '
         '{input[0]} {input[1]}'
 
+rule fastq_dump:
+    output:
+        'results/{samp}/{samp}_1.fastq.gz',
+        'results/{samp}/{samp}_2.fastq.gz'
+    threads: 1	
+    shell:
+        'fastq-dump '
+        '--split-files '
+	'-O results/{wildcards.samp} '
+        '--gzip '
+        '{wildcards.samp}'
+
 rule clean:
     shell:
-        'rm -rf results/*/kallisto {kidx}'
+        'rm -rf results/*/kallisto {kidx} {fasta}'
