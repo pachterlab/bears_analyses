@@ -1,9 +1,24 @@
 import sys, os, csv
+
+if not 'fasta' in config:
+    sys.exit("You must specify a 'fasta' parameter in your config file")    
+
 fasta_url = config['fasta']
 SRA_ids = []
-paired_end = config['use_paired_end']
-directory = config['directory']
+
+paired_end = True
+if 'use_paired_end' in config:
+    paired_end = config['use_paired_end']
+
+directory = '.'
+if 'directory' in config:
+    directory = config['directory']
+
+if not 'design_file' in config:
+    sys.exit("You must specify the name of your 'design_file' in your config file")  
+
 design_file = config['design_file']
+
 kmer_size = 31
 if 'kmer-size' in config:
     kmer_size = config['kmer-size']
@@ -12,7 +27,7 @@ bootstrap_samples = 0
 if 'bootstrap_samples' in config:
     bootstrap_samples = config['bootstrap_samples']
 
-bias = true
+bias = True
 if 'bias' in config:
     bias = config['bias']
 
@@ -105,7 +120,7 @@ if paired_end:
             directory + '/results/{s}/kallisto/abundance.h5'
         threads: num_threads
         shell:
-            kallisto_quant_shell
+            kallisto_quant_shell + 
             '-o {output[0]} '
             '-t {threads} '
             '{input[0]} {input[1]}'
@@ -132,7 +147,7 @@ else:
             directory + '/results/{s}/kallisto/abundance.h5'
         threads: num_threads
         shell:
-            kallisto_quant_shell
+            kallisto_quant_shell + 
             '-o {output[0]} '
             '-t {threads} '
             '{input[0]} '
