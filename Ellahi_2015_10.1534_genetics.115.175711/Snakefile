@@ -1,7 +1,7 @@
 species = 'saccharomyces_cerevisiae'
 gtf = 'Saccharomyces_cerevisiae.R64-1-1.80.gtf'
 fasta = 'Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa'
-kidx = 'Saccharomyces_cerevisiae.R64-1-1.rel81.cdna.all.21.kidx'
+kidx = 'Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.kidx'
 ensembl = 'ftp://ftp.ensembl.org/pub/release-80'
 
 sids = ['SRR1812768', 'SRR1812760', 'SRR1811834', 'SRR1812754', 'SRR1812759',
@@ -12,8 +12,8 @@ rule all:
         kidx,
         expand('results/{s}/kallisto/abundance.h5', s = sids)
 
-rule get_genome:
-    output: 
+rule get_transcriptome:
+    output:
         expand('../genome/{f}', f = fasta)
     shell:
         'cd ../genome && '
@@ -65,7 +65,7 @@ rule fastq_dump:
     output:
         'results/{samp}/{samp}_1.fastq.gz',
         'results/{samp}/{samp}_2.fastq.gz'
-    threads: 1	
+    threads: 1
     shell:
         'fastq-dump '
         '--split-files '

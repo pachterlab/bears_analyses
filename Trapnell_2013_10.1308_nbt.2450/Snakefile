@@ -16,9 +16,12 @@ SRA_PAIRED = []
 if isfile(META):
     SRA_PAIRED = get_sample_ids(META)
 
-ANNO_PRE = "annotation/Homo_sapiens.GRCh38.rel80.cdna.all"
-ANNO_FA = ANNO_PRE + ".fa.gz"
+ANNO_PRE = "Homo_sapiens.GRCh38.dna.toplevel"
+ANNO_FA = ANNO_PRE + ".fa"
 KAL_IDX = ANNO_PRE + ".kidx"
+GTF = "Homo_sapiens.GRCh38.80.gtf"
+
+ensembl = 'ftp://ftp.ensembl.org/pub/release-80'
 
 rule all:
     input:
@@ -32,11 +35,32 @@ rule metadata:
     shell:
         "cd R; Rscript get_sample_info.R; cd .."
 
+rule get_transcriptome:
+    output:
+        expand('../genome/{f}', f = ANNO_FA)
+    shell:
+        'cd ../genome/ && '
+        'wget -O {ANNO_FA}.gz {ensembl}/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.toplevel.fa.gz && '
+        'gunzip {ANNO_FA}.gz'
+
+rule get_anno:
+    input:
+        expand('../genome/{f}', f = ANNO_FA)
+    output:
+        expand('../annotation/{g}', g = GTF)
+    shell:
+        'cd ../annotation && '
+        'wget -O {GTF}.gz {ensembl}/gtf/homo_sapiens/Homo_sapiens.GRCh38.80.gtf.gz && '
+        'gunzip {GTf}.gz && '
+	    'gffread {GTF} ../genome/{ANNO_FA}'
+
 rule kallisto_index:
+    input:
+        expand('../genome/{f}', f = ANNO_FA)
     output: KAL_IDX
     threads: 1
     shell:
-        'kallisto index -i {KAL_IDX} ' + ANNO_FA
+        'kallisto index -k 21 -i {KAL_IDX} ../genome/{ANNO_FA}'
 
 rule fastq_dump_paired:
     output:
