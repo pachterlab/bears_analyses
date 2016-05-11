@@ -3,8 +3,21 @@ fasta_url = config['fasta']
 SRA_ids = []
 paired_end = config['use_paired_end']
 directory = config['directory']
-condition = config['condition']
 design_file = config['design_file']
+kmer-size = 31
+if 'kmer-size' in config:
+    kmer-size = config['kmer-size'] 
+
+sd = -1
+fraglength = -1
+
+if not paired_end:
+    if not 'sd' in config:
+        sys.exit("For single end reads, you must specify an estimate standard deviation in the config file") 
+    if not 'fragment-length' in config:
+        sys.exit("For single end reads, you must specify an estimate fragment length in the config file") 
+    sd = config['sd']
+    fraglength = config['fragment-length']
 
 index = -1
 with open(design_file) as tsv:
@@ -38,7 +51,7 @@ rule all:
         expand('{d}/{k}', d = directory, k = kidx), 
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     shell:
-        'Rscript sleuth.R {directory} {design_file} {condition}'  
+        'Rscript sleuth.R {directory} {design_file}'  
 
 if ".gz" in fasta:   
     rule get_genome:
@@ -64,7 +77,7 @@ rule index:
     shell:
         'cd {directory} && '
         'kallisto index '
-        '-k 21 '
+        '-k {kmer-size} '
         '-i {kidx} '
         '../genome/{base}.fa'
 

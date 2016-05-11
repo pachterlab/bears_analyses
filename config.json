@@ -6,5 +6,8 @@
     "condition": "wildtype",
     "full_model": "~condition", 
     "reduced_model": "~1",
-    "DOI": "" 
+    "DOI": "",
+    "kmer-size": 31,
+    "sd": 100,
+    "fragment-length": 100
 }
