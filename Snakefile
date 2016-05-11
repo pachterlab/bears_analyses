@@ -4,20 +4,21 @@ SRA_ids = []
 paired_end = config['use_paired_end']
 directory = config['directory']
 design_file = config['design_file']
-kmer-size = 31
+kmer_size = 31
 if 'kmer-size' in config:
-    kmer-size = config['kmer-size'] 
+    kmer_size = config['kmer-size']
 
-sd = -1
-fraglength = -1
+bootstrap_samples = 0
+if 'bootstrap_samples' in config:
+    bootstrap_samples = config['bootstrap_samples']
 
-if not paired_end:
-    if not 'sd' in config:
-        sys.exit("For single end reads, you must specify an estimate standard deviation in the config file") 
-    if not 'fragment-length' in config:
-        sys.exit("For single end reads, you must specify an estimate fragment length in the config file") 
-    sd = config['sd']
-    fraglength = config['fragment-length']
+bias = true
+if 'bias' in config:
+    bias = config['bias']
+
+num_threads = 1
+if 'threads' in config:
+    num_threads = config['threads']
 
 index = -1
 with open(design_file) as tsv:
@@ -27,9 +28,9 @@ with open(design_file) as tsv:
             line = line.strip().split(' ')
             if index == -1:
                 if not 'run' in line:
-                    sys.exit("Your study design file must have a column named 'run'")                    
+                    sys.exit("Your study design file must have a column named 'run'")
                 index = line.index('run')
-            else:  
+            else:
                 SRA_ids.append(line[index])
 
 os.system("mkdir -p " + directory)
@@ -42,44 +43,56 @@ if index == -1:
     print("'" + fasta + "' does not have a .fa extension")
     sys.exit(1)
 
-base = fasta[0:index] 
+base = fasta[0:index]
 
 kidx = base + ".kidx"
 
+kallisto_index_shell = 'cd ' + directory + ' && '
+kallisto_index_shell += 'kallisto index -k ' + str(kmer_size) + ' '
+kallisto_index_shell += '-i ' + kidx + ' ../genome/{base}.fa'
+
+get_fasta_shell = 'cd genome && wget -O ' + fasta + ' ' + fasta_url + ' '
+if ".gz" in fasta:
+    get_fasta_shell += '&& gunzip ' + fasta
+
+sd = -1
+fraglength = -1
+
+kallisto_quant_shell = 'kallisto quant -i ' + directory + '/' + kidx + ' '
+if bias:
+    kallisto_quant_shell += ' --bias '
+if bootstrap_samples > 0:
+    kallisto_quant_shell += ' -b ' + str(bootstrap_samples) + ' '
+
+if not paired_end:
+    if not 'sd' in config:
+        sys.exit("For single end reads, you must specify an estimate standard deviation in the config file")
+    if not 'fragment-length' in config:
+        sys.exit("For single end reads, you must specify an estimate fragment length in the config file")
+    sd = config['sd']
+    fraglength = config['fragment-length']
+    kallisto_quant_shell += '--single -l ' + str(fraglength) + ' -s ' + str(sd) + ' '
+
 rule all:
     input:
-        expand('{d}/{k}', d = directory, k = kidx), 
+        expand('{d}/{k}', d = directory, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     shell:
-        'Rscript sleuth.R {directory} {design_file}'  
+        'Rscript sleuth.R {directory} {design_file}'
 
-if ".gz" in fasta:   
-    rule get_genome:
-        output:
-            expand('genome/{f}', f = base + ".fa")
-        shell:
-            'cd genome && '
-            'wget -O {fasta} {fasta_url} && '
-            'gunzip {fasta}'
-else:
-    rule get_genome:
-        output:
-            expand('genome/{f}', f = base + ".fa")
-        shell:
-            'cd genome && '
-            'wget -O {fasta} {fasta_url}'
+rule get_genome:
+    output:
+        expand('genome/{f}', f = base + ".fa")
+    shell:
+        get_fasta_shell
 
 rule index:
     input:
         expand('genome/{f}', f = base + ".fa")
-    output: 
+    output:
         directory + '/' + kidx
     shell:
-        'cd {directory} && '
-        'kallisto index '
-        '-k {kmer-size} '
-        '-i {kidx} '
-        '../genome/{base}.fa'
+        kallisto_index_shell
 
 if paired_end:
     rule kallisto:
@@ -90,19 +103,19 @@ if paired_end:
         output:
             directory + '/results/{s}/kallisto',
             directory + '/results/{s}/kallisto/abundance.h5'
-        threads: 2
+        threads: num_threads
         shell:
-            'kallisto quant -i {directory}/{kidx} '
-            '--bias -b 30 -o {output[0]} '
+            kallisto_quant_shell
+            '-o {output[0]} '
             '-t {threads} '
-            '{input[0]} {input[1]}' 
-    
+            '{input[0]} {input[1]}'
+
     rule fastq_dump:
         output:
             directory + '/results/{s}/{s}_1.fastq.gz',
             directory + '/results/{s}/{s}_2.fastq.gz'
         threads: 1
-        shell: 
+        shell:
             'cd {directory} && '
             'fastq-dump '
             '--split-files '
@@ -117,22 +130,20 @@ else:
         output:
             directory + '/results/{s}/kallisto',
             directory + '/results/{s}/kallisto/abundance.h5'
-        threads: 2
+        threads: num_threads
         shell:
-            'kallisto quant -i {directory}/{kidx} '
-            '--bias -b 30 -o {output[0]} '
+            kallisto_quant_shell
+            '-o {output[0]} '
             '-t {threads} '
-            '--single '            
-            '{input[0]} ' 
-    
+            '{input[0]} '
+
     rule fastq_dump:
         output:
             directory + '/results/{s}/{s}.fastq.gz',
         threads: 1
-        shell: 
+        shell:
             'cd {directory} && '
             'fastq-dump '
             '-O results/{wildcards.s} '
             '--gzip '
             '{wildcards.s}'
-

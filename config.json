@@ -4,10 +4,13 @@
     "directory": "PRJDB2508",
     "design_file" : "PRJDB2508/SraRunTable.txt",
     "condition": "wildtype",
-    "full_model": "~condition", 
+    "full_model": "~condition",
     "reduced_model": "~1",
     "DOI": "",
     "kmer-size": 31,
     "sd": 100,
-    "fragment-length": 100
+    "fragment-length": 100,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true
 }
