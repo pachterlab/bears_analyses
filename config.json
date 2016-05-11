@@ -3,5 +3,8 @@
     "use_paired_end": true,
     "directory": "PRJDB2508",
     "design_file" : "PRJDB2508/SraRunTable.txt",
-    "condition": "wildtype"
-
+    "condition": "wildtype",
+    "full_model": "~condition", 
+    "reduced_model": "~1",
+    "DOI": "" 
+}

@@ -1,4 +1,4 @@
-sample   genotype  growth ros13 dml23 osmoticstress
+run   genotype  growth ros13 dml23 osmoticstress
 DRR016125   wildtype   mock    on    on            no
 DRR016126   wildtype    aba    on    on            no
 DRR016127   wildtype saline    on    on           yes
