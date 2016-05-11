@@ -1,0 +1,7 @@
+{
+    "fasta": "http://bio.math.berkeley.edu/kallisto/transcriptomes/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz",
+    "use_paired_end": true,
+    "directory": "PRJDB2508",
+    "design_file" : "PRJDB2508/SraRunTable.txt",
+    "condition": "wildtype"
+
