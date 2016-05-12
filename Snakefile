@@ -1,5 +1,4 @@
 import sys, os, csv
-print(config)
 
 if not 'fasta' in config:
     sys.exit("You must specify a 'fasta' parameter in your config file")    
@@ -14,7 +13,7 @@ paired_end = True
 config_name = config['name']
 
 if 'use_paired_end' in config:
-    paired_end = config['use_paired_end']
+    paired_end = bool(config['use_paired_end'])
 
 directory = '.'
 if 'directory' in config:
@@ -27,19 +26,19 @@ design_file = config['design_file']
 
 kmer_size = 31
 if 'kmer-size' in config:
-    kmer_size = config['kmer-size']
+    kmer_size = int(config['kmer-size'])
 
 bootstrap_samples = 0
 if 'bootstrap_samples' in config:
-    bootstrap_samples = config['bootstrap_samples']
+    bootstrap_samples = int(config['bootstrap_samples'])
 
 bias = True
 if 'bias' in config:
-    bias = config['bias']
+    bias = bool(config['bias'])
 
 num_threads = 1
 if 'threads' in config:
-    num_threads = config['threads']
+    num_threads = int(config['threads'])
 
 index = -1
 with open(design_file) as tsv:

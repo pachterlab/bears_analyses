@@ -1,6 +1,6 @@
 {
     "name": "Chickens/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/gallus_gallus/dna/Gallus_gallus.Galgal4.dna.toplevel.fa.gz",
+    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/gallus_gallus/cdna/Gallus_gallus.Galgal4.cdna.all.fa.gz",
     "directory": "Chickens",
     "use_paired_end": true,
     "design_file": "Chickens/study_design.txt",

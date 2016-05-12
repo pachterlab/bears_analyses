@@ -1,6 +1,6 @@
 {
     "name": "zebrafish/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/danio_rerio/dna/Danio_rerio.GRCz10.dna.toplevel.fa.gz",
+    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/danio_rerio/cdna/Danio_rerio.GRCz10.cdna.all.fa.gz",
     "directory": "zebrafish",
     "use_paired_end": true,
     "design_file": "zebrafish/study_design.txt",
