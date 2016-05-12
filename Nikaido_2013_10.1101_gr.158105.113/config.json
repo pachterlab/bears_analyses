@@ -1,0 +1,14 @@
+{
+    "name": "Nikaido_2013_10.1101_gr.158105.113/config.json",
+    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/latimeria_chalumnae/cdna/Latimeria_chalumnae.LatCha1.cdna.all.fa.gz"
+    "use_paired_end": true,
+    "directory": "Nikaido_2013_10.1101_gr.158105.113",
+    "design_file" : "Nikaido_2013_10.1101_gr.158105.113/SraRunTable.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": "10.1101/gr.158105.113",
+    "kmer-size": 21,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true
+}

@@ -1,1 +1,0 @@
-kallisto index -k 21 -i Rattus_norvegicus.Rnor_5.0.rel79.cdna.all.kidx Rattus_norvegicus.Rnor_5.0.rel79.cdna.all.fa.gz

@@ -1,0 +1,16 @@
+{
+    "name": "Risso_2011_10.1186_1471-2105-12-480/config.json",
+    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz",
+    "use_paired_end": false,
+    "directory": "Risso_2011_10.1186_1471-2105-12-480",
+    "design_file" : "Risso_2011_10.1186_1471-2105-12-480/study_design.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": "10.1186/1471-2105-12-480",
+    "kmer-size": 21,
+    "fragment-length": 100,
+    "sd": 30,
+    "bootstrap_samples": 30,
+    "threads": 8, 
+    "bias": true
+}

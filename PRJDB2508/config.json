@@ -1,0 +1,14 @@
+{
+    "name": "PRJDB2508/config.json",
+    "fasta": "http://bio.math.berkeley.edu/kallisto/transcriptomes/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz",
+    "use_paired_end": true,
+    "directory": "PRJDB2508",
+    "design_file" : "PRJDB2508/SraRunTable.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": "10.1534/genetics.115.175711",
+    "kmer-size": 21,
+    "sd": 100,
+    "threads": 4, 
+    "bias": true
+}

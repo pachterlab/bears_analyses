@@ -7,7 +7,7 @@
     "condition": "wildtype",
     "full_model": "~condition",
     "reduced_model": "~1",
-    "DOI": "",
+    "DOI": "10.1534/genetics.115.175711",
     "kmer-size": 21,
     "sd": 100,
     "fragment-length": 100,

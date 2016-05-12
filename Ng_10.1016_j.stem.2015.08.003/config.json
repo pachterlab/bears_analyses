@@ -1,0 +1,14 @@
+{
+    "name": "Ng_10.1016_j.stem.2015.08.003/config.json",
+    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz",
+    "use_paired_end": true,
+    "directory": "Ng_10.1016_j.stem.2015.08.003", 
+    "design_file" : "Ng_10.1016_j.stem.2015.08.003/SraRunTable.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": "10.1016/j.stem.2015.08.003",
+    "kmer-size": 21,
+    "sd": 100,
+    "threads": 4, 
+    "bias": true
+}
