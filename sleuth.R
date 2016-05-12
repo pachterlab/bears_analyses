@@ -1,12 +1,14 @@
-#Usage: Rscript sleuth.R <base_directory> <study_design_file> <conditionbase>
+#Usage: Rscript sleuth.R <base_directory> <study_design_file> <config_file>
 #assumes study_design_file is in base_directory
 
-library(rjsonlite)
-design_file <- readJSON(args[2])
+args = commandArgs(trailingOnly=TRUE)
+
+library(jsonlite)
+file_contents <- paste(readLines(args[3]), collapse="")
+design_file <- fromJSON(file_contents)
 
 #Remove the line below before shipping
 .libPaths(c(.libPaths(), '/home/psturm/R/x86_64-pc-linux-gnu-library/3.2'))
-args = commandArgs(trailingOnly=TRUE)
 library('sleuth')
 base_dir <- args[1]
 

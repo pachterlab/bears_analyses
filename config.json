@@ -1,4 +1,5 @@
 {
+    "name": "config.json",
     "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz",
     "use_paired_end": true,
     "directory": "Ellahi_2015_10.1534_genetics.115.175711",

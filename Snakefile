@@ -1,4 +1,5 @@
 import sys, os, csv
+print(config)
 
 if not 'fasta' in config:
     sys.exit("You must specify a 'fasta' parameter in your config file")    
@@ -6,7 +7,12 @@ if not 'fasta' in config:
 fasta_url = config['fasta']
 SRA_ids = []
 
+if not 'name' in config:
+    sys.exit("You must specify the name of this file as a parameter in 'name'")
+
 paired_end = True
+config_name = config['name']
+
 if 'use_paired_end' in config:
     paired_end = config['use_paired_end']
 
@@ -93,7 +99,7 @@ rule all:
         expand('{d}/{k}', d = directory, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     shell:
-        'Rscript sleuth.R {directory} {design_file}'
+        'Rscript sleuth.R {directory} {design_file} {config_name}'
 
 rule get_genome:
     output:
