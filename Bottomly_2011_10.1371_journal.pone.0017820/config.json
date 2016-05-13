@@ -6,7 +6,7 @@
     "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/study_design.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
-    "DOI": "10.1186/1471-2105-12-480",
+    "DOI": "10.1371/journal.pone.0017820",
     "kmer-size": 21,
     "fragment-length": 300,
     "sd": 60,

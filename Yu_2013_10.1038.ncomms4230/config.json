@@ -1,0 +1,16 @@
+{
+    "name": "Yu_2013_10.1038.ncomms4230/config.json",
+    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz",
+    "use_paired_end": false,
+    "directory": "Yu_2013_10.1038.ncomms4230",
+    "design_file" : "Yu_2013_10.1038.ncomms4230/SraRunTable.txt",
+    "full_model": "~tissue_s",
+    "reduced_model": "~1",
+    "DOI": "10.1038/ncomms4230",
+    "kmer-size": 21,
+    "fragment-length": 260,
+    "sd": 40,
+    "bootstrap_samples": 30,
+    "threads": 8,
+    "bias": true
+}
