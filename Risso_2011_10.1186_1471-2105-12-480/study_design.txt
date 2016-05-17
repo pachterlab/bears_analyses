@@ -1,4 +1,4 @@
-run_accession Culture Library_prep_protocol Growth_condition Flow_cell
+run Culture Library_prep_protocol Growth_condition Flow_cell
 SRR390934  D7 1 Del 428R1
 SRR390933  D2 1 Del 428R1
 SRR390932  D1 1 Del 428R1	

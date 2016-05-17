@@ -45,7 +45,7 @@ with open(design_file) as tsv:
     for line in csv.reader(tsv, dialect="excel-tab"):
         if line:
             line = line[0]
-            line = line.strip().split(' ')
+            line = line.strip().split()
             if index == -1:
                 if not 'run' in line:
                     sys.exit("Your study design file must have a column named 'run'")
