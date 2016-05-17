@@ -1,0 +1,16 @@
+{
+    "name": "Bottomly_2011_10.1371_journal.pone.0017820/config.json",
+    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz",
+    "use_paired_end": false,
+    "directory": "Bottomly_2011_10.1371_journal.pone.0017820",
+    "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/study_design.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": "10.1371/journal.pone.0017820",
+    "kmer-size": 21,
+    "fragment-length": 300,
+    "sd": 60,
+    "bootstrap_samples": 30,
+    "threads": 8,
+    "bias": true
+}

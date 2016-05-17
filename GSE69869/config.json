@@ -1,0 +1,14 @@
+{
+    "name": "GSE69869/config.json",
+    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz",
+    "directory": "GSE69869",
+    "use_paired_end": true,
+    "design_file": "GSE69869/study_design.txt",
+    "full_model": "~condition",
+    "reduced_model": "~1",
+    "DOI": null,
+    "kmer-size": 21,
+    "bootstrap_samples": 30,
+    "threads": 4,
+    "bias": true
+}
