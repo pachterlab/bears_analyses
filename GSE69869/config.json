@@ -1,6 +1,5 @@
 {
-    "name": "GSE69869/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz",
+    "species": "mus_musculus",
     "directory": "GSE69869",
     "use_paired_end": true,
     "design_file": "GSE69869/study_design.txt",

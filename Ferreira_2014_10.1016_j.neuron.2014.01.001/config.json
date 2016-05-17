@@ -1,6 +1,5 @@
 {
-    "name": "Ferreira_2014_10.1016_j.neuron.2014.01.001/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/danio_rerio/cdna/Danio_rerio.GRCz10.cdna.all.fa.gz",
+    "species": "danio_rerio",
     "directory": "Ferreira_2014_10.1016_j.neuron.2014.01.001",
     "use_paired_end": true,
     "design_file": "Ferreira_2014_10.1016_j.neuron.2014.01.001/study_design.txt",

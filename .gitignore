@@ -1,4 +1,4 @@
-/genome
+/transcriptome
 */results
 *.kidx
 .snakemake/

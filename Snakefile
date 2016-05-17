@@ -1,16 +1,19 @@
-import sys, os, csv
+import sys, os, csv, json
 
-if not 'fasta' in config:
-    sys.exit("You must specify a 'fasta' parameter in your config file")    
+if not 'species' in config:
+    sys.exit("You must specify a 'species' parameter in your config file")    
 
-fasta_url = config['fasta']
+species = config['species']
+with open('species.json') as species_file:
+    species_dict = json.load(species_file)
+
+if not species in species_dict:
+    sys.exit("The species '" + species + "' does not appear in the species.json file")
+
+fasta_url = species_dict[species]
 SRA_ids = []
 
-if not 'name' in config:
-    sys.exit("You must specify the name of this file as a parameter in 'name'")
-
 paired_end = True
-config_name = config['name']
 
 if 'use_paired_end' in config:
     paired_end = bool(config['use_paired_end'])
@@ -47,13 +50,17 @@ with open(design_file) as tsv:
             line = line[0]
             line = line.strip().split()
             if index == -1:
-                if not 'run' in line:
-                    sys.exit("Your study design file must have a column named 'run'")
-                index = line.index('run')
+                if 'Run_s' in line:
+                    index = line.index('Run_s')
+                elif 'run' in line:
+                    index = line.index('run')
+                else:
+                    sys.exit("Your study design file must have a column named 'Run_s' or 'run'")
             else:
-                SRA_ids.append(line[index])
+               SRA_ids.append(line[index])
 
-os.system("mkdir -p " + directory)
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 fasta = fasta_url.split('/')
 fasta = fasta[len(fasta) - 1]
@@ -69,9 +76,9 @@ kidx = base + ".kidx"
 
 kallisto_index_shell = 'cd ' + directory + ' && '
 kallisto_index_shell += 'kallisto index -k ' + str(kmer_size) + ' '
-kallisto_index_shell += '-i ' + kidx + ' ../genome/{base}.fa'
+kallisto_index_shell += '-i ' + kidx + ' ../transcriptome/{base}.fa'
 
-get_fasta_shell = 'cd genome && wget -O ' + fasta + ' ' + fasta_url + ' '
+get_fasta_shell = 'cd transcriptome && wget -O ' + fasta + ' ' + fasta_url + ' '
 if ".gz" in fasta:
     get_fasta_shell += '&& gunzip ' + fasta
 
@@ -93,6 +100,21 @@ if not paired_end:
     fraglength = config['fragment-length']
     kallisto_quant_shell += '--single -l ' + str(fraglength) + ' -s ' + str(sd) + ' '
 
+all_shell = ''
+full_model = ''
+reduced_model = ''
+
+
+if 'full_model' in config:
+    full_model = config['full_model']
+    if 'reduced_model' in config:
+        reduced_model = config['reduced_model']
+        all_shell = 'Rscript sleuth.R {directory} {design_file} {full_model} {reduced_model}'
+    else:
+        print("You must specify a 'reduced_model' parameeter for sleuth to run")
+else:
+    print("You must specify a 'full_model' parameter for sleuth to run")
+
 rule all:
     input:
         expand('{d}/{k}', d = directory, k = kidx),
@@ -100,15 +122,15 @@ rule all:
     shell:
         'Rscript sleuth.R {directory} {design_file} {config_name}'
 
-rule get_genome:
+rule get_transcriptome:
     output:
-        expand('genome/{f}', f = base + ".fa")
+        expand('transcriptome/{f}', f = base + ".fa")
     shell:
         get_fasta_shell
 
 rule index:
     input:
-        expand('genome/{f}', f = base + ".fa")
+        expand('transcriptome/{f}', f = base + ".fa")
     output:
         directory + '/' + kidx
     shell:

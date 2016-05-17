@@ -1,14 +1,11 @@
-#Usage: Rscript sleuth.R <base_directory> <study_design_file> <config_file>
+#Usage: Rscript sleuth.R <base_directory> <study_design_file> <full_model> <reduced_model>
 #assumes study_design_file is in base_directory
 
 args = commandArgs(trailingOnly=TRUE)
 
-library(jsonlite)
-file_contents <- paste(readLines(args[3]), collapse="")
-design_file <- fromJSON(file_contents)
-
 #Remove the line below before shipping
 .libPaths(c(.libPaths(), '/home/psturm/R/x86_64-pc-linux-gnu-library/3.2'))
+
 library('sleuth')
 base_dir <- args[1]
 
@@ -19,9 +16,9 @@ s2c <- read.table(file.path(args[2]), header = TRUE, stringsAsFactors=FALSE)
 s2c <- dplyr::select(s2c, sample = run, condition)
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 
-so <- sleuth_prep(s2c, as.formula(design_file$full_model))
+so <- sleuth_prep(s2c, as.formula(args[3]))
 so <- sleuth_fit(so)
-so <- sleuth_fit(so, "reduced", as.formula(design_file$reduced_model))
+so <- sleuth_fit(so, "reduced", as.formula(args[4]))
 
 so <- sleuth_lrt(so, "reduced:full") 
 

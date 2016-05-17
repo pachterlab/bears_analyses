@@ -1,6 +1,5 @@
 {
-    "name": "Bottomly_2011_10.1371_journal.pone.0017820/config.json",
-    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz",
+    "species" : "mus_musculus",
     "use_paired_end": false,
     "directory": "Bottomly_2011_10.1371_journal.pone.0017820",
     "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/study_design.txt",

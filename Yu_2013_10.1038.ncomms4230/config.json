@@ -1,6 +1,5 @@
 {
-    "name": "Yu_2013_10.1038.ncomms4230/config.json",
-    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz",
+    "species" : "saccharomyces_cerevisiae",
     "use_paired_end": false,
     "directory": "Yu_2013_10.1038.ncomms4230",
     "design_file" : "Yu_2013_10.1038.ncomms4230/SraRunTable.txt",

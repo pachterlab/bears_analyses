@@ -1,6 +1,5 @@
 {
-    "name": "Trapnell_2013_10.1308_nbt.2450/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz",
+    "species": "homo_sapiens",
     "use_paired_end": true,
     "directory": "Trapnell_2013_10.1308_nbt.2450",
     "design_file" : "Trapnell_2013_10.1308_nbt.2450/study_design.txt",

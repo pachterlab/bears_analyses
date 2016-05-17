@@ -1,6 +1,5 @@
 {
-    "name": "Amemiya_2013_10.1038_nature12027/config.json",
-    "fasta" : "ftp://ftp.ensembl.org/pub/release-80/fasta/latimeria_chalumnae/cdna/Latimeria_chalumnae.LatCha1.cdna.all.fa.gz",
+    "species" : "latimeria_chalumnae",
     "use_paired_end": true,
     "directory": "Amemiya_2013_10.1038_nature12027",
     "design_file" : "Amemiya_2013_10.1038_nature12027/SraRunTable.txt",

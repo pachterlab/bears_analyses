@@ -1,6 +1,5 @@
 {
-    "name": "Yi_2015_10.1371_journal.pone.0136765/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/gallus_gallus/cdna/Gallus_gallus.Galgal4.cdna.all.fa.gz",
+    "species": "gallus_gallus",
     "directory": "Yi_2015_10.1371_journal.pone.0136765",
     "use_paired_end": true,
     "design_file": "Yi_2015_10.1371_journal.pone.0136765/study_design.txt",

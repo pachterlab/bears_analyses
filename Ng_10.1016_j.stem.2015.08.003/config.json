@@ -1,6 +1,5 @@
 {
-    "name": "Ng_10.1016_j.stem.2015.08.003/config.json",
-    "fasta": "ftp://ftp.ensembl.org/pub/release-80/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz",
+    "species": "homo_sapiens",
     "use_paired_end": true,
     "directory": "Ng_10.1016_j.stem.2015.08.003", 
     "design_file" : "Ng_10.1016_j.stem.2015.08.003/SraRunTable.txt",
