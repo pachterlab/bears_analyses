@@ -2,7 +2,7 @@
     "ailuropoda_melanoleuca": "Ailuropoda_melanoleuca.ailMel1.cdna.all.fa.gz",
     "anas_platyrhynchos": "Anas_platyrhynchos.BGI_duck_1.0.cdna.all.fa.gz",
     "anolis_carolinensis": "Anolis_carolinensis.AnoCar2.0.cdna.all.fa.gz",
-    "arabidopsis_thaliana": "http://bio.math.berkeley.edu/kallisto/transcriptomes/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz"",
+    "arabidopsis_thaliana": "http://bio.math.berkeley.edu/kallisto/transcriptomes/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz",
     "astyanax_mexicanus": "Astyanax_mexicanus.AstMex102.cdna.all.fa.gz",
     "bos_taurus": "Bos_taurus.UMD3.1.cdna.all.fa.gz",
     "caenorhabditis_elegans": "Caenorhabditis_elegans.WBcel235.cdna.all.fa.gz",

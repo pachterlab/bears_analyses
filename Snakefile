@@ -104,7 +104,6 @@ all_shell = ''
 full_model = ''
 reduced_model = ''
 
-
 if 'full_model' in config:
     full_model = config['full_model']
     if 'reduced_model' in config:
@@ -120,7 +119,7 @@ rule all:
         expand('{d}/{k}', d = directory, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     shell:
-        'Rscript sleuth.R {directory} {design_file} {config_name}'
+        all_shell
 
 rule get_transcriptome:
     output:
