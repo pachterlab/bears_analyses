@@ -1,16 +1,13 @@
-import sys, os, csv, json
+import sys, os, csv
+include: 'species.py'
 
 if not 'species' in config:
     sys.exit("You must specify a 'species' parameter in your config file")    
 
-species = config['species']
-with open('species.json') as species_file:
-    species_dict = json.load(species_file)
-
 if not species in species_dict:
-    sys.exit("The species '" + species + "' does not appear in the species.json file")
+    sys.exit("The species '" + species + "' does not appear in the species.py file")
 
-fasta_url = species_dict[species]
+fasta_url = species_dict[species]	
 SRA_ids = []
 
 paired_end = True
