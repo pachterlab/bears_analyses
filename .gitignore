@@ -2,3 +2,5 @@
 */results
 *.kidx
 .snakemake/
+.sass-cache/
+_site/
