@@ -4,6 +4,7 @@ include: 'species.py'
 if not 'species' in config:
     sys.exit("You must specify a 'species' parameter in your config file")    
 
+species = config['species']
 if not species in species_dict:
     sys.exit("The species '" + species + "' does not appear in the species.py file")
 
@@ -71,9 +72,10 @@ base = fasta[0:index]
 
 kidx = base + ".kidx"
 
-kallisto_index_shell = 'cd ' + directory + ' && '
+kallisto_index_shell =  'cd k_indices && '
+kallisto_index_shell += 'mkdir -p ' + str(kmer_size) + ' && cd ' + str(kmer_size) + ' && '
 kallisto_index_shell += 'kallisto index -k ' + str(kmer_size) + ' '
-kallisto_index_shell += '-i ' + kidx + ' ../transcriptome/{base}.fa'
+kallisto_index_shell += '-i ' + kidx + ' ../../transcriptome/{base}.fa'
 
 get_fasta_shell = 'cd transcriptome && wget -O ' + fasta + ' ' + fasta_url + ' '
 if ".gz" in fasta:
@@ -82,7 +84,7 @@ if ".gz" in fasta:
 sd = -1
 fraglength = -1
 
-kallisto_quant_shell = 'kallisto quant -i ' + directory + '/' + kidx + ' '
+kallisto_quant_shell = 'kallisto quant -i k_indices/' + str(kmer_size) + '/' + kidx + ' '
 if bias:
     kallisto_quant_shell += ' --bias '
 if bootstrap_samples > 0:
@@ -113,7 +115,7 @@ else:
 
 rule all:
     input:
-        expand('{d}/{k}', d = directory, k = kidx),
+        expand('k_indices/{k_s}/{k}', k_s = kmer_size, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     shell:
         all_shell
@@ -128,7 +130,7 @@ rule index:
     input:
         expand('transcriptome/{f}', f = base + ".fa")
     output:
-        directory + '/' + kidx
+        'k_indices/' + str(kmer_size) + '/' + kidx
     shell:
         kallisto_index_shell
 
@@ -137,7 +139,7 @@ if paired_end:
         input:
             directory + '/results/{s}/{s}_1.fastq.gz',
             directory + '/results/{s}/{s}_2.fastq.gz',
-            directory + '/' + kidx
+            'k_indices/' + str(kmer_size) + '/' + kidx
         output:
             directory + '/results/{s}/kallisto',
             directory + '/results/{s}/kallisto/abundance.h5'
@@ -164,7 +166,7 @@ else:
     rule kallisto:
         input:
             directory + '/results/{s}/{s}.fastq.gz',
-            directory + '/' + kidx
+            'k_indices/' + str(kmer_size) + '/' + kidx
         output:
             directory + '/results/{s}/kallisto',
             directory + '/results/{s}/kallisto/abundance.h5'

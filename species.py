@@ -72,5 +72,3 @@ species_dict = {
     "xenopus_tropicalis": base_url + "xenopus_tropicalis/cdna/Xenopus_tropicalis.JGI_4.2.cdna.all.fa.gz",
     "xiphophorus_maculatus": base_url + "xiphophorus_maculatus/cdna/Xiphophorus_maculatus.Xipmac4.4.2.cdna.all.fa.gz"
 }
-
-print(species)
