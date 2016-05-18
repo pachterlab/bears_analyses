@@ -4,3 +4,5 @@
 .snakemake/
 .sass-cache/
 _site/
+.jekyll-metadata
+_images/
