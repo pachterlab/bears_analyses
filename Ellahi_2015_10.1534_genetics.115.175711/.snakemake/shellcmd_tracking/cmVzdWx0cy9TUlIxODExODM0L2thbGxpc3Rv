@@ -1,1 +1,0 @@
-kallisto quant -i Saccharomyces_cerevisiae.R64-1-1.rel81.cdna.all.21.kidx --bias -b 30 -o results/SRR1811834/kallisto -t 1 results/SRR1811834/SRR1811834_1.fastq.gz results/SRR1811834/SRR1811834_2.fastq.gz
