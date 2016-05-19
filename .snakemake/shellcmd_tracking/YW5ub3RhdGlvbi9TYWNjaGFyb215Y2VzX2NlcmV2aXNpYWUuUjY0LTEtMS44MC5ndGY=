@@ -1,1 +1,0 @@
-cd annotation && wget -O Saccharomyces_cerevisiae.R64-1-1.80.gtf.gz ftp://ftp.ensembl.org/pub/release-80/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.80.gtf.gz && gunzip Saccharomyces_cerevisiae.R64-1-1.80.gtf.gz && gffread Saccharomyces_cerevisiae.R64-1-1.80.gtf ../genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa

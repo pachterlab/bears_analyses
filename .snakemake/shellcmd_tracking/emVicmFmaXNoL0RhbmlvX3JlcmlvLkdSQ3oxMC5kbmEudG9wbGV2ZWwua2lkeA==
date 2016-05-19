@@ -1,1 +1,0 @@
-cd zebrafish && kallisto index -k 31 -i Danio_rerio.GRCz10.dna.toplevel.kidx ../genome/Danio_rerio.GRCz10.dna.toplevel.fa

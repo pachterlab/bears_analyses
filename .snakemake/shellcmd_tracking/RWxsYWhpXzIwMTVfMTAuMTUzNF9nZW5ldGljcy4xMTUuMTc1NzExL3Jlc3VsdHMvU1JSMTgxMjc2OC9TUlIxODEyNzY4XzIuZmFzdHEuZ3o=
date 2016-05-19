@@ -1,1 +1,0 @@
-cd Ellahi_2015_10.1534_genetics.115.175711 && fastq-dump --split-files -O results/SRR1812768 --gzip SRR1812768

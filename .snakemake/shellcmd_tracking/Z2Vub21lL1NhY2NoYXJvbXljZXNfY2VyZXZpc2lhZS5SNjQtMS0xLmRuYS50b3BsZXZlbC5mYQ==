@@ -1,1 +1,0 @@
-cd genome && wget -O Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz && gunzip Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz

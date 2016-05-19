@@ -1,1 +1,0 @@
-cd genome && wget -O Latimeria_chalumnae.LatCha1.rel79.cdna.all.fa.gz http://bio.math.berkeley.edu/kallisto/transcriptomes/Latimeria_chalumnae.LatCha1.rel79.cdna.all.fa.gz && gunzip Latimeria_chalumnae.LatCha1.rel79.cdna.all.fa.gz

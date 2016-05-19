@@ -1,1 +1,0 @@
-kallisto quant -i Ellahi_2015_10.1534_genetics.115.175711/Saccharomyces_cerevisiae.R64-1-1.cdna.all.kidx  --bias  -b 30 -o Ellahi_2015_10.1534_genetics.115.175711/results/SRR1812768/kallisto -t 1 Ellahi_2015_10.1534_genetics.115.175711/results/SRR1812768/SRR1812768_1.fastq.gz Ellahi_2015_10.1534_genetics.115.175711/results/SRR1812768/SRR1812768_2.fastq.gz

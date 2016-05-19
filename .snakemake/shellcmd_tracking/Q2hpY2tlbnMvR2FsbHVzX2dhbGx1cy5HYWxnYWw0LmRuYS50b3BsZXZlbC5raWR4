@@ -1,1 +1,0 @@
-cd Chickens && kallisto index -k 31 -i Gallus_gallus.Galgal4.dna.toplevel.kidx ../genome/Gallus_gallus.Galgal4.dna.toplevel.fa

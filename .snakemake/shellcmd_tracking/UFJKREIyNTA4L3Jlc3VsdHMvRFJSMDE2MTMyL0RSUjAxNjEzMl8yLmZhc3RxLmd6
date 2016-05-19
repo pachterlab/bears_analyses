@@ -1,1 +1,0 @@
-cd PRJDB2508 && fastq-dump --split-files -O results/DRR016132 --gzip DRR016132
