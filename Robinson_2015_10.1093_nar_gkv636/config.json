@@ -1,0 +1,15 @@
+{
+    "species": "saccharomyces_cerevisiae",
+    "use_paired_end": false,
+    "directory": "Robinson_2015_10.1093_nar_gkv636",
+    "design_file" : "Robinson_2015_10.1093_nar_gkv636/SraRunTable.txt",
+    "full_model": "~treatment_s",
+    "reduced_model": "~1",
+    "DOI": "10.1093/nar/gkv636",
+    "kmer-size": 21,
+    "sd": 100,
+    "fragment-length": 141,
+    "bootstrap_samples": 30,
+    "threads": 4,
+    "bias": true
+}
