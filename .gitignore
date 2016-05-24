@@ -6,3 +6,4 @@ transcriptome
 _site/
 .jekyll-metadata
 _images/
+*app.R

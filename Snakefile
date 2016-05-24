@@ -43,10 +43,8 @@ if 'threads' in config:
 
 index = -1
 with open(design_file) as tsv:
-    for line in csv.reader(tsv, dialect="excel-tab"):
+    for line in csv.reader(tsv, delimiter='\t'):
         if line:
-            line = line[0]
-            line = line.strip().split()
             if index == -1:
                 if 'Run_s' in line:
                     index = line.index('Run_s')
