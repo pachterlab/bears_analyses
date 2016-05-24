@@ -16,11 +16,10 @@ s2c <- read.table(file.path(args[2]), header = TRUE, stringsAsFactors=FALSE)
 s2c <- dplyr::select(s2c, sample = run, condition)
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 
-so <- sleuth_prep(s2c, as.formula(args[3]))
-so <- sleuth_fit(so)
-so <- sleuth_fit(so, "reduced", as.formula(args[4]))
+so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
+so <- sleuth_fit(so, as.formula(args[3]), "full")
+so <- sleuth_fit(so, as.formula(args[4]), "reduced") 
+so <- sleuth_lrt(so, "reduced", "full") 
 
-so <- sleuth_lrt(so, "reduced:full") 
-
-sleuth_deploy(so)
+sleuth_deploy(so, base_dir)
 
