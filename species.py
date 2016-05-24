@@ -4,7 +4,7 @@ species_dict = {
     "ailuropoda_melanoleuca": base_url + "ailuropoda_melanoleuca/cdna/Ailuropoda_melanoleuca.ailMel1.cdna.all.fa.gz",
     "anas_platyrhynchos": base_url + "anas_platyrhynchos/cdna/Anas_platyrhynchos.BGI_duck_1.0.cdna.all.fa.gz",
     "anolis_carolinensis": base_url + "anolis_carolinensis/cdna/Anolis_carolinensis.AnoCar2.0.cdna.all.fa.gz",
-    "arabidopsis_thaliana": base_url + "TAIR10.28.cdna.all.fa.gz",
+    "arabidopsis_thaliana": "http://bio.math.berkeley.edu/kallisto/transcriptomes/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz",
     "astyanax_mexicanus": base_url + "astyanax_mexicanus/cdna/Astyanax_mexicanus.AstMex102.cdna.all.fa.gz",
     "bos_taurus": base_url + "bos_taurus/cdna/Bos_taurus.UMD3.1.cdna.all.fa.gz",
     "caenorhabditis_elegans": base_url + "caenorhabditis_elegans/cdna/Caenorhabditis_elegans.WBcel235.cdna.all.fa.gz",
