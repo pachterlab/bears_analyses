@@ -1,1 +1,0 @@
-cd Ellahi && fastq-dump --split-files -O results/SRR1811834 --gzip SRR1811834

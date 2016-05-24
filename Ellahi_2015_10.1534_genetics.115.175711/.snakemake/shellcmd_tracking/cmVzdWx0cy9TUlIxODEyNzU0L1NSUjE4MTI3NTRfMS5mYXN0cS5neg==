@@ -1,1 +1,0 @@
-fastq-dump --split-files -O results/SRR1812754 --gzip SRR1812754

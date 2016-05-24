@@ -1,1 +1,0 @@
-cd genome && wget -O Gallus_gallus.Galgal4.dna.toplevel.fa.gz ftp://ftp.ensembl.org/pub/release-80/fasta/gallus_gallus/dna/Gallus_gallus.Galgal4.dna.toplevel.fa.gz && gunzip Gallus_gallus.Galgal4.dna.toplevel.fa.gz

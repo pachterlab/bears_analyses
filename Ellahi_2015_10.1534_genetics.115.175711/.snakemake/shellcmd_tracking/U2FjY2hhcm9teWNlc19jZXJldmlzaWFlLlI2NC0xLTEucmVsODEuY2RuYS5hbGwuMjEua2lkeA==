@@ -1,1 +1,0 @@
-kallisto index -k 21 -i Saccharomyces_cerevisiae.R64-1-1.rel81.cdna.all.21.kidx ../genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa

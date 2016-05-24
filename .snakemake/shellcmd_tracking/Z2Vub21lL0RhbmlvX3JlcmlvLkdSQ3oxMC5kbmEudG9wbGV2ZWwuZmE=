@@ -1,1 +1,0 @@
-cd genome && wget -O Danio_rerio.GRCz10.dna.toplevel.fa.gz ftp://ftp.ensembl.org/pub/release-80/fasta/danio_rerio/dna/Danio_rerio.GRCz10.dna.toplevel.fa.gz && gunzip Danio_rerio.GRCz10.dna.toplevel.fa.gz

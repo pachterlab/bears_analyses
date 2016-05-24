@@ -1,1 +1,0 @@
-kallisto quant -i Ellahi/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.kidx --bias -b 30 -o Ellahi/results/SRR1811834/kallisto -t 1 Ellahi/results/SRR1811834/SRR1811834_1.fastq.gz Ellahi/results/SRR1811834/SRR1811834_2.fastq.gz

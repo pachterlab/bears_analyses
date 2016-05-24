@@ -1,1 +1,0 @@
-cd Ellahi_2015_10.1534_genetics.115.175711 && kallisto index -k 21 -i Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.kidx ../genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa

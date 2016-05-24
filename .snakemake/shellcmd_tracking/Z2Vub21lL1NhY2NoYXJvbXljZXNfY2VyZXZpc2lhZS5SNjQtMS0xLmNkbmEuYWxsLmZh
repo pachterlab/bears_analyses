@@ -1,1 +1,0 @@
-cd genome && wget -O Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz ftp://ftp.ensembl.org/pub/release-80/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz && gunzip Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz
