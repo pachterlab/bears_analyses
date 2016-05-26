@@ -2,7 +2,7 @@
     "species" : "mus_musculus",
     "use_paired_end": false,
     "directory": "Bottomly_2011_10.1371_journal.pone.0017820",
-    "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/study_design.txt",
+    "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/SraRunTable.txt",
     "full_model": "~strain + lane.number",
     "reduced_model": "~lane.number",
     "DOI": "10.1371/journal.pone.0017820",
