@@ -11,6 +11,5 @@
     "sd": 20,
     "bootstrap_samples": 30,
     "threads": 8,
-    "bias": true,
-    "analysis": "http://lair.berkeley.edu/bottomly/"
+    "bias": true
 }
