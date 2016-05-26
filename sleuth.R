@@ -13,7 +13,9 @@ sample_id <- dir(file.path(base_dir, "results"))
 kal_dirs <- sapply(sample_id, function(id) file.path(base_dir, "results", id, "kallisto"))
 kal_dirs <- rev(kal_dirs)
 s2c <- read.table(file.path(args[2]), header = TRUE, stringsAsFactors=FALSE, sep="\t")
-s2c <- dplyr::select(s2c, sample = run, condition)
+colnames(s2c)[which(names(s2c) == "sample")] = "sample_"
+colnames(s2c)[which(names(s2c) == "run")] = "sample"
+colnames(s2c)[which(names(s2c) == "Run_s")] = "sample"
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 
 so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
