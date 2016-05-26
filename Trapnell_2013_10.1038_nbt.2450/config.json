@@ -1,8 +1,8 @@
 {
     "species": "homo_sapiens",
     "use_paired_end": true,
-    "directory": "Trapnell_2013_10.1308_nbt.2450",
-    "design_file" : "Trapnell_2013_10.1308_nbt.2450/study_design.txt",
+    "directory": "Trapnell_2013_10.1038_nbt.2450",
+    "design_file" : "Trapnell_2013_10.1038_nbt.2450/study_design.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
     "DOI": "10.1038/nbt.2450",

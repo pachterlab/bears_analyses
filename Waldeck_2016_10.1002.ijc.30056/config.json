@@ -3,7 +3,7 @@
     "directory": "Waldeck_2016_10.1002.ijc.30056",
     "use_paired_end": true,
     "design_file": "Waldeck_2016_10.1002.ijc.30056/SraRunTable.txt",
-    "full_model": "~condition",
+    "full_model": "~source_name_s",
     "reduced_model": "~1",
     "DOI": "10.1002/ijc.30056",
     "kmer-size": 21,

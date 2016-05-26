@@ -3,7 +3,7 @@
     "directory": "Ferreira_2014_10.1016_j.neuron.2014.01.001",
     "use_paired_end": true,
     "design_file": "Ferreira_2014_10.1016_j.neuron.2014.01.001/SraRunTable.txt",
-    "full_model": "~condition",
+    "full_model": "~agent_s",
     "reduced_model": "~1",
     "DOI": "10.1016/j.neuron.2014.01.001",
     "kmer-size": 21,
