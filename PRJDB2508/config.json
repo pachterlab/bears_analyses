@@ -5,9 +5,9 @@
     "design_file" : "PRJDB2508/SraRunTable.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
-    "DOI": "10.1534/genetics.115.175711",
+    "DOI": null, 
     "kmer-size": 21,
-    "sd": 100,
+    "bootstrap_samples": 30,
     "threads": 4, 
     "bias": true
 }

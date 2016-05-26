@@ -8,8 +8,8 @@
     "DOI": "10.1093/nar/gkv636",
     "kmer-size": 21,
     "sd": 100,
-    "fragment-length": 141,
-    "bootstrap_samples": 30,
+    "fragment-length": 200,
+    "bootstrap_samples": 20,
     "threads": 4,
     "bias": true
 }

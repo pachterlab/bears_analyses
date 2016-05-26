@@ -1,14 +1,14 @@
 {
     "species": "mus_musculus",
-    "directory": "GSE69869",
+    "directory": "Waldeck_2016_10.1002.ijc.30056",
     "use_paired_end": true,
-    "design_file": "GSE69869/study_design.txt",
+    "design_file": "Waldeck_2016_10.1002.ijc.30056/study_design.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
-    "DOI": null,
+    "DOI": "10.1002/ijc.30056",
     "kmer-size": 21,
     "bootstrap_samples": 30,
     "threads": 4,
     "bias": true,
-    "analysis": "http://lair.berkeley.edu/GSE69869/"
+    "analysis": "http://lair.berkeley.edu/waldeck/"
 }

@@ -7,8 +7,8 @@
     "reduced_model": "~1",
     "DOI": "10.1038/ncomms4230",
     "kmer-size": 21,
-    "fragment-length": 260,
-    "sd": 40,
+    "fragment-length": 200,
+    "sd": 20,
     "bootstrap_samples": 30,
     "threads": 8,
     "bias": true

@@ -7,9 +7,10 @@
     "reduced_model": "~1",
     "DOI": "10.1371/journal.pone.0017820",
     "kmer-size": 21,
-    "fragment-length": 300,
-    "sd": 60,
+    "fragment-length": 200,
+    "sd": 20,
     "bootstrap_samples": 30,
     "threads": 8,
-    "bias": true
+    "bias": true,
+    "analysis": "http://lair.berkeley.edu/bottomly/"
 }
