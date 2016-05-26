@@ -188,3 +188,11 @@ else:
             '-O results/{wildcards.s} '
             '--gzip '
             '{wildcards.s}'
+
+rule clean:
+    shell:
+        'cd {directory} && '
+        'rm -rf results/*/kallisto && '
+        'rm -rf so.rds app.R '
+
+
