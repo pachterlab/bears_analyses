@@ -2,7 +2,7 @@
     "species": "mus_musculus",
     "directory": "Waldeck_2016_10.1002.ijc.30056",
     "use_paired_end": true,
-    "design_file": "Waldeck_2016_10.1002.ijc.30056/study_design.txt",
+    "design_file": "Waldeck_2016_10.1002.ijc.30056/SraRunTable.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
     "DOI": "10.1002/ijc.30056",

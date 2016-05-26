@@ -1,7 +1,0 @@
-run condition sample
-SRR1821187 high 3 
-SRR1821188 high 2
-SRR1821186 high 1
-SRR1821185 low 3
-SRR1821184 low 2
-SRR1821183 low 1
