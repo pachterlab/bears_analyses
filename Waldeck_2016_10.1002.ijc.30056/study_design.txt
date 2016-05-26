@@ -1,4 +1,4 @@
-run condition sample case
+run	condition	sample	case
 SRR2062555  HR  8   A
 SRR2062554  HR  8   B
 SRR2062553  HR  7   A
