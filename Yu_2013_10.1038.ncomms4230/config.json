@@ -5,7 +5,7 @@
     "design_file" : "Yu_2013_10.1038.ncomms4230/SraRunTable.txt",
     "full_model": "~tissue_s",
     "reduced_model": "~1",
-    "DOI": "10.1038/ncomms4230",
+    "DOI": null, 
     "kmer-size": 21,
     "fragment-length": 200,
     "sd": 20,

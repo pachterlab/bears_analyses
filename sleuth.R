@@ -9,19 +9,21 @@ args = commandArgs(trailingOnly=TRUE)
 library('sleuth')
 base_dir <- args[1]
 
-sample_id <- dir(file.path(base_dir, "results"))
-kal_dirs <- sapply(sample_id, function(id) file.path(base_dir, "results", id, "kallisto"))
-kal_dirs <- rev(kal_dirs)
 s2c <- read.table(file.path(args[2]), header = TRUE, stringsAsFactors=FALSE, sep="\t")
 colnames(s2c)[which(names(s2c) == "sample")] = "sample_"
 colnames(s2c)[which(names(s2c) == "run")] = "sample"
 colnames(s2c)[which(names(s2c) == "Run_s")] = "sample"
-s2c <- dplyr::mutate(s2c, path = kal_dirs) 
+run_dirs <- s2c$sample
+kal_dirs <- c()
 
+for (dir in run_dirs) {
+	kal_dirs <- c(kal_dirs, file.path(base_dir, "results", dir, "kallisto"))
+}
+
+s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
 so <- sleuth_fit(so, as.formula(args[3]), "full")
 so <- sleuth_fit(so, as.formula(args[4]), "reduced") 
 so <- sleuth_lrt(so, "reduced", "full") 
-
 sleuth_deploy(so, base_dir)
 
