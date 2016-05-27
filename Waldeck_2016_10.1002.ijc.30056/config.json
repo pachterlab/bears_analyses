@@ -9,5 +9,6 @@
     "kmer-size": 21,
     "bootstrap_samples": 30,
     "threads": 4,
-    "bias": true
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/waldeck/"
 }

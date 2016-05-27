@@ -11,5 +11,6 @@
     "fragment-length": 200,
     "bootstrap_samples": 20,
     "threads": 4,
-    "bias": true
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/robinson/"
 }

@@ -3,13 +3,14 @@
     "use_paired_end": false,
     "directory": "Bottomly_2011_10.1371_journal.pone.0017820",
     "design_file" : "Bottomly_2011_10.1371_journal.pone.0017820/SraRunTable.txt",
-    "full_model": "~strain+lane.number",
-    "reduced_model": "~lane.number",
+    "full_model": "~strain+lane_number",
+    "reduced_model": "~lane_number",
     "DOI": "10.1371/journal.pone.0017820",
     "kmer-size": 21,
     "fragment-length": 200,
     "sd": 20,
     "bootstrap_samples": 30,
     "threads": 8,
-    "bias": true
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/bottomly/"
 }
