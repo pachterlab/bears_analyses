@@ -3,7 +3,7 @@
     "use_paired_end": false,
     "directory": "Risso_2011_10.1186_1471-2105-12-480",
     "design_file" : "Risso_2011_10.1186_1471-2105-12-480/SraRunTable.txt",
-    "full_model": "~condition",
+    "full_model": "~Growth_condition",
     "reduced_model": "~1",
     "DOI": "10.1186/1471-2105-12-480",
     "kmer-size": 21,
