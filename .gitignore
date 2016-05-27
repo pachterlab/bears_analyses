@@ -8,4 +8,4 @@ _site/
 _images/
 *app.R
 *so.rds
-
+*.pyc

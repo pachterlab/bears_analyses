@@ -5,7 +5,7 @@
     "design_file": "Ferreira_2014_10.1016_j.neuron.2014.01.001/SraRunTable.txt",
     "full_model": "~agent_s",
     "reduced_model": "~1",
-    "DOI": "10.1016/j.neuron.2014.01.001",
+    "DOI": null,
     "kmer-size": 21,
     "bootstrap_samples": 30,
     "threads": 4,
