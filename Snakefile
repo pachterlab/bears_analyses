@@ -29,7 +29,7 @@ kmer_size = 31
 if 'kmer-size' in config:
     kmer_size = int(config['kmer-size'])
 
-bootstrap_samples = 0
+bootstrap_samples = 30
 if 'bootstrap_samples' in config:
     bootstrap_samples = int(config['bootstrap_samples'])
 

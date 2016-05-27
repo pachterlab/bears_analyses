@@ -3,7 +3,7 @@
     "use_paired_end": true,
     "directory": "PRJDB2508",
     "design_file" : "PRJDB2508/SraRunTable.txt",
-    "full_model": "~osmosticstress",
+    "full_model": "~growth",
     "reduced_model": "~1",
     "DOI": null, 
     "kmer-size": 21,

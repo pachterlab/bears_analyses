@@ -3,7 +3,6 @@
     "use_paired_end": true,
     "directory": "Ellahi_2015_10.1534_genetics.115.175711",
     "design_file" : "Ellahi_2015_10.1534_genetics.115.175711/SraRunTable.txt",
-    "condition": "wildtype",
     "full_model": "~condition",
     "reduced_model": "~1",
     "DOI": "10.1534/genetics.115.175711",
