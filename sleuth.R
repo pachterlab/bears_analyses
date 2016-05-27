@@ -21,6 +21,8 @@ for (dir in run_dirs) {
 }
 
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
+
+print(s2c)
 so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
 so <- sleuth_fit(so, as.formula(args[3]), "full")
 so <- sleuth_fit(so, as.formula(args[4]), "reduced") 

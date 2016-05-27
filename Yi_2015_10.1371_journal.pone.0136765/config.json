@@ -2,7 +2,7 @@
     "species": "gallus_gallus",
     "directory": "Yi_2015_10.1371_journal.pone.0136765",
     "use_paired_end": true,
-    "design_file": "Yi_2015_10.1371_journal.pone.0136765/SraRunTableDropped.txt",
+    "design_file": "Yi_2015_10.1371_journal.pone.0136765/SraRunTable.txt",
     "full_model": "~condition",
     "reduced_model": "~1",
     "DOI": "10.1371/journal.pone.0136765",
