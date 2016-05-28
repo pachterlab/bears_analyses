@@ -3,7 +3,7 @@
     "use_paired_end": true,
     "directory": "Ayers_10.1186_s12864-015-1886-5",
     "design_file" : "Ayers_10.1186_s12864-015-1886-5/SraRunTable.txt",
-    "full_model": "~SRA_Sample_s",
+    "full_model": "~sex_s",
     "reduced_model": "~1",
     "DOI": "10.1186/s12864-015-1886-5",
     "kmer-size": 31,
