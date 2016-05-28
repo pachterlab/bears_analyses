@@ -5,7 +5,7 @@
     "design_file" : "Ayers_10.1186_gb-2013-14-3-r26/SraRunTable.txt",
     "full_model": "~sex_s",
     "reduced_model": "~1",
-    "DOI": "10.1186/s12864-015-1886-5",
+    "DOI": "10.1186/gb-2013-14-3-r26",
     "kmer-size": 31,
     "bootstrap_samples": 30,
     "threads": 4, 
