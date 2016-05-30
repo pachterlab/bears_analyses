@@ -9,6 +9,5 @@
     "bootstrap_samples": 30,
     "threads": 4,
     "bias": true,
-	"analysis": "http://lair.berkeley.edu/yi/",
-	"dropped": "http://lair.berkeley.edu/yi_dropped/"
+	"analysis": "http://lair.berkeley.edu/yi/"
 }
