@@ -1,0 +1,14 @@
+{
+    "species" : "homo_sapiens",
+    "use_paired_end": true,
+    "directory": "Ren_10.1038_cr.2012.30",
+    "design_file" : "Ren_10.1038_cr.2012.30/SraRunTable.txt",
+    "full_model": "~SRA_Sample_s",
+    "reduced_model": "~1",
+    "DOI": "10.1038/cr.2012.30",
+    "kmer-size": 31,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/ren12/"
+}
