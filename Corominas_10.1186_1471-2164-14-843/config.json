@@ -1,0 +1,13 @@
+{
+    "species": "sus_scrofa",
+    "use_paired_end": true,
+    "directory": "Corominas_10.1186_1471-2164-14-843",
+    "design_file" : "Corominas_10.1186_1471-2164-14-843/SraRunTable.txt",
+    "full_model": "~group_s",
+    "reduced_model": "~1",
+    "DOI": "10.1186/1471-2164-14-843",
+    "kmer-size": 31,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true
+}
