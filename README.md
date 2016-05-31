@@ -1,11 +1,10 @@
-# (Re-)Analyses
+# (Re)analyses of published RNA-Seq data
 
-A place to analyze data using kallisto and sleuth.
+This repository contains the files needed for processing and analyzing published RNA-Seq datasets. The results are hosted at [The Lair](pachterlab.github.io/lair)
 
-
-To rerun the analysis of a file, type:
+The analyses can also be run independently with:
 ```
 snakemake -p ---configfile {filename}/config.json
 ```
 
-where ```{filename}``` should be replaced by the desired file. 
+where ```{filename}``` should be replaced by a file corresponding to a dataset.
