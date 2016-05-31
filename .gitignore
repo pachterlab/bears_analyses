@@ -9,4 +9,4 @@ _images/
 *app.R
 *so.rds
 *.pyc
-PIDS.txt
+PIDS.json
