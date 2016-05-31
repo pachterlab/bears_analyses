@@ -1,6 +1,7 @@
 import os, subprocess, time, sys, json
 lair_dir = "/home/psturm/lair"
 bears_dir = "/home/psturm/bears_analyses"
+max_processes = 4
 
 try:
 	git_pull = subprocess.check_output(["git", "pull"], cwd=bears_dir) 
@@ -19,10 +20,17 @@ for directory in directories:
 		if (directory not in old_pids):
 			a_dirs.append(directory)
 
-process_ids = {} 
+process_ids = {}
+ret_codes = {}
 
 for directory in a_dirs:
 	if ('so.rds' not in os.listdir(directory)):
+		num_open = 0
+		for k, v in process_ids.iteritems():
+			if v.poll is None:
+				num_open += 1
+			if num_open > 3:
+				ret_codes[k] = v.wait()
 		process_ids[directory] = subprocess.Popen(["snakemake", "-p", "--configfile", directory + "/config.json"])
 
 process_file = open('PIDS.json', 'w')
@@ -37,23 +45,23 @@ process_file.write('\t"time-opened": "' + time_opened + '"\n')
 process_file.write('}')
 process_file.close()
 
-ret_codes = {}
 for k, v in process_ids.iteritems():
-	ret_codes[k] = v.wait()
-	with open(k + '/config.json') as configf:
-		config = json.load(configf)
-		if 'analysis' in config:
-			srv_dir = config['analysis']
-			base = "http://lair.berkeley.edu/"
-			base_index = srv_dir.find(base) + len(base)	
-			srv_dir = srv_dir[base_index:]
-			srv_dir = "/srv/shiny_server/" + srv_dir
-			try:
-				sudo_deploy = subprocess.check_output(["sudo", "mkdir", "-p", srv_dir])
-				sudo_mv = subprocess.check_output(["sudo", "cp", k + "/so.rds", k + "/app.R", srv_dir)
-				sudo_sed = subprocess.check_output(["sudo", "sed", "-i", """'1i.libPaths(c(.libPaths(), "/home/psturm/R/x86_64-pc-linux-gnu-library/3.3"))'""", srv_dir + "app.R"])
-			except subprocess.CalledProcessError as git_pull_err:
-				sys.exit("Return code for '" + str(" ".join(git_pull_err.cmd)) + "' was " + str(git_pull_err.returncode) + "\n")
+	if k not in ret_codes:
+		ret_codes[k] = v.wait()
+		with open(k + '/config.json') as configf:
+			config = json.load(configf)
+			if 'analysis' in config:
+				srv_dir = config['analysis']
+				base = "http://lair.berkeley.edu/"
+				base_index = srv_dir.find(base) + len(base)	
+				srv_dir = srv_dir[base_index:]
+				srv_dir = "/srv/shiny_server/" + srv_dir
+				try: #requires user input for sudo access
+					sudo_deploy = subprocess.check_output(["sudo", "mkdir", "-p", srv_dir])
+					sudo_mv = subprocess.check_output(["sudo", "cp", k + "/so.rds", k + "/app.R", srv_dir)
+					sudo_sed = subprocess.check_output(["sudo", "sed", "-i", """'1i.libPaths(c(.libPaths(), "/home/psturm/R/x86_64-pc-linux-gnu-library/3.3"))'""", srv_dir + "app.R"])
+				except subprocess.CalledProcessError as git_pull_err:
+					sys.exit("Return code for '" + str(" ".join(git_pull_err.cmd)) + "' was " + str(git_pull_err.returncode) + "\n")
 
 time_closed = time.strftime("%c")
 process_file = open('PIDS.json', 'w')
@@ -66,7 +74,6 @@ for k, v in ret_codes.iteritems():
 process_file.write('\t"time-closed": "' + time_closed + '"\n')
 process_file.write('}')
 process_file.close()
-sys.exit() #remove
 
 try:
 	git_pull = subprocess.check_output(["git", "pull"], cwd=lair_dir) 	
@@ -76,5 +83,3 @@ try:
 	git_push = subprocess.checkoutput(['git', 'push', 'origin', 'gh-pages'], cwd=lair_dir) #requires user input
 except subprocess.CalledProcessError as git_pull_err:
 	sys.exit("Return code for '" + str(" ".join(git_pull_err.cmd)) + "' was " + str(git_pull_err.returncode) + "\n")
-
-
