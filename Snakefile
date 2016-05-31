@@ -114,11 +114,14 @@ if 'full_model' in config:
 else:
     print("You must specify a 'full_model' parameter for sleuth to run")
 
-rule all:
+rule sleuth:
     input:
         expand('{i}{k}', i = index_path, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
-    shell:
+    output:
+		expand('{d}/so.rds', d = directory)
+		expand('{d}/app.R', d = directory)
+	shell:
         all_shell
 
 rule get_transcriptome:
@@ -194,5 +197,4 @@ rule clean:
         'cd {directory} && '
         'rm -rf results/*/kallisto && '
         'rm -rf so.rds app.R '
-
-
+		
