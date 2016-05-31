@@ -15,7 +15,7 @@ process_ids = {}
 
 for directory in a_dirs:
 	if ('so.rds' not in os.listdir(directory)):
-		subprocess.Popen(["snakemake", "-p", "--configfile", directory + "/config.json"])
+		process_ids[directory] = subprocess.Popen(["snakemake", "-p", "--configfile", directory + "/config.json"])
 
 process_file = open('PIDS.txt', 'w')
 process_file.write("Processes opened on " + time.strftime("%c") + "\n")

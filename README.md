@@ -4,7 +4,7 @@ This repository contains the files needed for processing and analyzing published
 
 The analyses can also be run independently with:
 ```
-snakemake -p ---configfile {filename}/config.json
+snakemake -p --configfile {filename}/config.json
 ```
 
 where ```{filename}``` should be replaced by a file corresponding to a dataset.

@@ -119,9 +119,8 @@ rule sleuth:
         expand('{i}{k}', i = index_path, k = kidx),
         expand('{d}/results/{s}/kallisto/abundance.h5', s = SRA_ids, d = directory)
     output:
-		expand('{d}/so.rds', d = directory)
-		expand('{d}/app.R', d = directory)
-	shell:
+        directory + '/so.rds'
+    shell:
         all_shell
 
 rule get_transcriptome:
