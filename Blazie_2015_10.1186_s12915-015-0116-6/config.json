@@ -6,7 +6,7 @@
     "full_model": "~tissue_s",
     "reduced_model": "~1",
     "DOI": "10.1186/s12915-015-0116-6",
-    "kmer-size": 21,
+    "kmer-size": 31,
     "bootstrap_samples": 40,
     "threads": 4, 
     "bias": true
