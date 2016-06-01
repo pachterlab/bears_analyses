@@ -1,0 +1,14 @@
+{
+    "species" : "homo_sapiens",
+    "use_paired_end": true,
+    "directory": "Eswaran_2012_10.1038_srep00264",
+    "design_file" : "Eswaran_2012_10.1038_srep00264/SraRunTable.txt",
+    "full_model": "~tumor_type_s",
+    "reduced_model": "~1",
+    "DOI": "10.1038/srep00264",
+    "kmer-size": 25,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/eswaran12/"
+}
