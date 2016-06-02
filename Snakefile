@@ -123,6 +123,12 @@ rule sleuth:
     shell:
         all_shell
 
+rule deploy:
+    input:
+        directory + '/so.rds'
+    shell:
+        'python deploy_file.py ' + directory + '/'
+
 rule get_transcriptome:
     output:
         expand('transcriptome/{f}', f = base + ".fa")

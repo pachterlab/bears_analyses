@@ -1,6 +1,6 @@
 import os, subprocess, time, sys, json
-lair_dir = "/home/psturm/lair"
-bears_dir = "/home/psturm/bears_analyses"
+lair_dir = "/home/lair"
+bears_dir = "/home/bears_analyses"
 max_processes = 4
 
 try:
@@ -31,6 +31,7 @@ for directory in a_dirs:
 				num_open += 1
 			if num_open > 3:
 				ret_codes[k] = v.wait()
+				num_open -= 1
 		process_ids[directory] = subprocess.Popen(["snakemake", "-p", "--configfile", directory + "/config.json"])
 
 process_file = open('PIDS.json', 'w')
@@ -58,8 +59,8 @@ for k, v in process_ids.iteritems():
 				srv_dir = "/srv/shiny_server/" + srv_dir
 				try: #requires user input for sudo access
 					sudo_deploy = subprocess.check_output(["sudo", "mkdir", "-p", srv_dir])
-					sudo_mv = subprocess.check_output(["sudo", "cp", k + "/so.rds", k + "/app.R", srv_dir)
-					sudo_sed = subprocess.check_output(["sudo", "sed", "-i", """'1i.libPaths(c(.libPaths(), "/home/psturm/R/x86_64-pc-linux-gnu-library/3.3"))'""", srv_dir + "app.R"])
+					sudo_mv = subprocess.check_output(["sudo", "cp", k + "/so.rds", k + "/app.R", srv_dir])
+					sudo_sed = subprocess.check_output(["sudo", "sed", "-i", """'1i .libPaths(c(.libPaths(), "/home/psturm/R/x86_64-pc-linux-gnu-library/3.3"))'""", srv_dir + "app.R"])
 				except subprocess.CalledProcessError as git_pull_err:
 					sys.exit("Return code for '" + str(" ".join(git_pull_err.cmd)) + "' was " + str(git_pull_err.returncode) + "\n")
 
