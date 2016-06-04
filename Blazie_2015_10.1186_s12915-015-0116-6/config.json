@@ -5,7 +5,7 @@
     "design_file" : "Blazie_2015_10.1186_s12915-015-0116-6/SraRunTable.txt",
     "full_model": "~tissue_s",
     "reduced_model": "~1",
-    "DOI": "10.1186/s12915-015-0116-6",
+    "DOI": null,
     "kmer-size": 31,
     "bootstrap_samples": 40,
     "threads": 4, 
