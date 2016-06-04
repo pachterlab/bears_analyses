@@ -202,4 +202,5 @@ rule clean:
         'cd {directory} && '
         'rm -rf results/*/kallisto && '
         'rm -rf so.rds app.R '
-		
+
+	
