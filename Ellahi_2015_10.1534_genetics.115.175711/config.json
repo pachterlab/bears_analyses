@@ -10,5 +10,6 @@
     "sd": 100,
     "threads": 4, 
     "bias": true,
-    "analysis": "http://lair.berkeley.edu/ellahi/"
+    "analysis": "http://lair.berkeley.edu/ellahi/",
+	"use_genes": true
 }

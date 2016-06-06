@@ -27,7 +27,7 @@ for (dir in run_dirs) {
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 
 print(s2c)
-if (length(args) == 5)) {
+if (length(args) == 5) {
     mart <- biomaRt::useMart(biomart = "ensembl", dataset = gene_anno_name)
     t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id", "external_gene_name"), mart = mart)
     t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id, ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
