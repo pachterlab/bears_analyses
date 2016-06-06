@@ -1,7 +1,11 @@
-#Usage: Rscript sleuth.R <base_directory> <study_design_file> <full_model> <reduced_model>
+#Usage: Rscript sleuth.R <base_directory> <study_design_file> <full_model> <reduced_model> <opt – gene_anno_name>
 #assumes study_design_file is in base_directory
 
 args = commandArgs(trailingOnly=TRUE)
+gene_anno_name <- ""
+if (length(args) == 5) {
+    gene_anno_name <- args[5]    
+}
 
 #Remove the line below before shipping
 .libPaths(c(.libPaths(), '/home/psturm/R/x86_64-pc-linux-gnu-library/3.2'))
@@ -23,7 +27,15 @@ for (dir in run_dirs) {
 s2c <- dplyr::mutate(s2c, path = kal_dirs) 
 
 print(s2c)
-so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
+if (length(args) == 5)) {
+    mart <- biomaRt::useMart(biomart = "ensembl", dataset = gene_anno_name)
+    t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id", "external_gene_name"), mart = mart)
+    t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id, ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
+    so <- sleuth_prep(s2c, as.formula(args[3]), target_mapping = t2g, read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
+}
+else {
+    so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
+}
 so <- sleuth_fit(so, as.formula(args[3]), "full")
 so <- sleuth_fit(so, as.formula(args[4]), "reduced") 
 so <- sleuth_lrt(so, "reduced", "full") 

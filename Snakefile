@@ -108,7 +108,12 @@ if 'full_model' in config:
     full_model = config['full_model']
     if 'reduced_model' in config:
         reduced_model = config['reduced_model']
-        all_shell = 'Rscript sleuth.R {directory} {design_file} {full_model} {reduced_model}'
+        if 'use_genes' in config and bool(config['use_genes']):
+            if not species in gene_anno_dict:
+                sys.exit("You specified to use gene annotations but your species does not appear in the ensembl gene annotation database")
+            all_shell = 'Rscript sleuth.R {directory} {design_file} {full_model} {reduced_model} ' + gene_anno_dict[species]
+        else:
+            all_shell = 'Rscript sleuth.R {directory} {design_file} {full_model} {reduced_model}'
     else:
         print("You must specify a 'reduced_model' parameeter for sleuth to run")
 else:
