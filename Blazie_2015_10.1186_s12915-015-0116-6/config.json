@@ -10,5 +10,6 @@
     "bootstrap_samples": 40,
     "threads": 4, 
     "bias": true,
-	"analysis": "http://lair.berkeley.edu/blazie15/"
+	"analysis": "http://lair.berkeley.edu/blazie15/",
+	"use_genes": true
 }

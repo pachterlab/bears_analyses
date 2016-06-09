@@ -12,5 +12,6 @@
     "bootstrap_samples": 30,
     "threads": 8,
     "bias": true,
-	"analysis": "http://lair.berkeley.edu/bottomly/"
+	"analysis": "http://lair.berkeley.edu/bottomly/",
+	"use_genes": true
 }
