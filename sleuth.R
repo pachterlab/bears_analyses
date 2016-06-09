@@ -32,8 +32,7 @@ if (length(args) == 5) {
     t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id", "external_gene_name"), mart = mart)
     t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id, ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
     so <- sleuth_prep(s2c, as.formula(args[3]), target_mapping = t2g, read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
-}
-else {
+} else {
     so <- sleuth_prep(s2c, as.formula(args[3]), read_bootstrap_tpm=TRUE, extra_bootstrap_summary=TRUE)
 }
 so <- sleuth_fit(so, as.formula(args[3]), "full")
