@@ -74,7 +74,7 @@ kidx = base + ".kidx"
 
 index_path = 'indices/' + species + '/' + str(kmer_size) + '/'
 
-kallisto_index_shell =  'mkdir -p ' + index_path + ' && cd $_ && ' 
+kallisto_index_shell =  'mkdir -p ' + index_path + ' && cd ' + index_path + ' && '
 kallisto_index_shell += 'kallisto index -k ' + str(kmer_size) + ' '
 kallisto_index_shell += '-i ' + kidx + ' ../../../transcriptome/{base}.fa'
 
