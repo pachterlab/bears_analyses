@@ -1,0 +1,15 @@
+{
+    "species" : "mus_musculus",
+    "use_paired_end": true,
+    "directory": "Boj_2015_10.1016_j.cell.2014.12.021",
+    "design_file" : "Boj_2015_10.1016_j.cell.2014.12.021/SraRunTable.txt",
+    "full_model": "~mouse_genotype_s+Sex_s",
+    "reduced_model": "~Sex_s",
+    "DOI": "10.1016/j.cell.2014.12.021",
+    "kmer-size": 25,
+    "bootstrap_samples": 30,
+    "threads": 4, 
+    "bias": true,
+	"analysis": "http://lair.berkeley.edu/boj15/",
+	"use_genes": true
+}
